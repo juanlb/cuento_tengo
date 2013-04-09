@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="well sidebar-nav">
+        <% form_tag :action=>"setear_sesion_position" do %>
+          <div class="well well-small">
+            <%= render :partial => "moves/primary_currency" %>
+          </div>
+          <div class="well well-small">
+            <%= render :partial => "accounts/accounts_section" %>
+          </div>
+          <br />
+          <%= submit_tag "Ver Posici&oacute;n", :class => 'btn btn-primary'  %>
+        <%  end %>
+      </div>
+    </div>
+
+    <div class="span9">
+      <div class="well well-small">
+        <%= render :partial => "accounts/account_positions" %>
+      </div>
+      <div class="well well-small">
+        <h3>Previsiones</h3>
+
+
+        <table class="table table-striped table-condensed table-bordered">
+          <tr>
+            <td>
+              <b>Previsiones</b>
+            </td>
+            <td class="td_numero" style="width: 1%">
+              <%= @prevs_periodo%>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <h5>Total de Previsiones</h5>
+            </td>
+            <td class="td_numero" style="width: 1%">
+              <h5><%= @prevs_periodo %></h5>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="well well-small budget">
+        <% total = session[:total_cuenta].to_f + @prevs_periodo.to_f %>
+        <table class="table table-striped table-condensed table-bordered">
+          <tr>
+            <td>
+              <h3>Posición al final del período</h3>
+            </td>
+            <td style="width: 1%">
+              <h3><span class="<%= (total > 0) ? "green" : "red" %>"><%= total %></span></h3>
+            </td>
+          </tr>
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+</div>

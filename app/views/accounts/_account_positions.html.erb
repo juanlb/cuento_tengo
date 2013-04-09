@@ -1,0 +1,18 @@
+<div id="lista_cuenta_posicion">
+  <h3>Cuentas</h3>
+  <table class="table table-striped table-condensed table-bordered">
+
+    <% session[:total_cuenta] = 0 -%>
+
+    <%= render :partial => "/accounts/account_position", :collection => @accounts%>
+  
+    <tr>
+      <td>
+        <h5>Total de Cuentas</h5>
+      </td>
+      <td class="td_numero" style="width: 1%">
+        <h5><%= session[:total_cuenta] %></h5>
+      </td>
+    </tr>
+  </table>
+</div>

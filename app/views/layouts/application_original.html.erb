@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>..:: Cuanto Tengo? ::..</title>
+    <%# javascript_include_tag :defaults %>
+    <%= javascript_include_tag 'prototype' %>
+
+    <% CalendarDateSelect.format=(:hyphen_ampm )%>
+    <%= calendar_date_select_includes "red"  %>
+
+
+    <%= stylesheet_link_tag 'layout' %>
+    <%= stylesheet_link_tag 'forms' %>
+
+  </head>
+  <body>
+    <div id="contenedor">
+      <% if  logged_in? -%>
+        <div id="cabecera">
+
+          <%= link_to "Movimientos", :controller => "moves" %> |
+          <%= link_to "Categor&iacute;as", :controller => "categories" %> |
+          <%= link_to "Cuentas", :controller => "accounts" %> |
+          <%= link_to "Previsiones programadas", :controller => "sched_previsions" %> |
+
+          <%= link_to "Presupuestos", :controller => "budgets" -%> |
+          <%= link_to "Posici&oacute;n", :controller => "moves", :action => "position" %> |
+          <%= link_to "Usuarios", "#"%> |
+          <%= link_to "Estad&iacute;sticas", "#"%> |
+          <%= link_to "Salir", "/logout"%>
+
+
+        </div>
+      <% else -%>
+        <%= link_to "Registrarse", "/signup"%>
+      <% end -%>
+
+      <div id="flash" >
+        &nbsp; <%= flash[:notice] %>
+      </div>
+
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

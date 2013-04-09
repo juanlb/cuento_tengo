@@ -1,0 +1,52 @@
+<% form_for(@fee) do |f| %>
+  <%= f.error_messages %>
+
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#">Gasto en cuotas</a></li>
+  </ul>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <%= radio_button_tag 'operation', 'out', true %> Gasto
+      <%= radio_button_tag 'operation', 'in' %> Dep&oacute;sito
+    </div>
+    <div class="row-fluid">
+      <div class="span3">
+        <br />
+        <%= f.label "Fecha de inicio" %>
+        <%= calendar_date_select_tag "fee[created_at]", Time.now, :time => true, :class => "calendario" %>
+      </div>
+
+      <div class="span2">
+        <br />
+        <%= f.label "Descripci&oacute;n" %>
+        <%= f.text_field :description, :size => 20 %>
+      </div>
+      <div class="span2">
+        <br />
+        <%= f.label "Categor&iacute;a" %>
+        <%= f.select :category_id, @categories.collect {|z| [z.format_name, z.id]}, { :include_blank => true } %>
+      </div>
+      <div class="span2">
+        <br />
+        <%= f.label "Cuenta" %>
+        <%= f.select :account_id, @accounts.collect {|z| [z.name, z.id]} %>
+      </div>
+      <div class="span1">
+        <%= f.label "Cantidad Cuotas" %>
+        <%= f.text_field :fee_cant %>
+      </div>
+      <div class="span1">
+        <%= f.label "Monto Cuota" %>
+        <%= f.text_field :amount %>
+      </div>
+
+      <div class="span1">
+        <br />
+        <%= f.label "&nbsp;" %>
+        <%= f.submit 'Crear', :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

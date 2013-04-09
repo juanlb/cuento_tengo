@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span5 offset3">
+      <div class="well">
+
+
+        <h1>Editando prevision</h1>
+
+        <% form_for(@sched_prevision) do |f| %>
+          <%= f.error_messages %>
+          <p>
+            <%= radio_button_tag 'operation', 'out', @sched_prevision.operation == -1 %> Gasto
+            <%= radio_button_tag 'operation', 'in', @sched_prevision.operation == 1 %> Dep&oacute;sito
+          </p>
+          <p>
+            <%= f.label "Descripci&oacute;n" %>
+            <%= f.text_field :description %>
+          </p>
+          <p>
+            <%= f.label "Cuenta" %>
+            <%= f.select :account_id, @accounts.collect {|z| [z.name, z.id]} %>
+          </p>
+
+
+          <p>
+            <%= f.label "Categor&iacute;a" %>
+            <%= f.select :category_id, @categories.collect {|z| [z.format_name, z.id]}, { :include_blank => true } %>
+          </p>
+          <p>
+            <%= f.label "D&iacute;a del mes" %>
+            <%= f.select :apply_day, @num_day.collect {|z| [z, z]} %>
+          </p>
+          
+
+          <p>
+            <%= f.label "Monto" %>
+            <%= text_field_tag "move[amount]", @sched_prevision.amount.abs %>
+          </p>
+          <div class="row-fluid">
+            <div class="span1">
+              <%= link_to 'Cancelar', {:action => 'index'}, :class => 'btn' %>
+            </div>
+            <div class="span1 offset9">
+              <%= f.submit 'Editar', :class => 'btn btn-primary' %>
+            </div>
+          </div>
+          
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

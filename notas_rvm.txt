@@ -1,0 +1,16 @@
+rvm install ree
+
+poner rubygems en 1.3.5 (el mismo que está en el server)
+rvm install rubygems 1.3.5
+
+en /home/particion_datos/juanlb_files/Snappler/SnapplerFiles/cuanto_tengo/Rakefile
+cambiar:
+  'rake/rdoctask'
+por:
+  'rdoc/task'
+
+gem install rdoc (puede dar error)
+gem install mysql
+ 
+
+

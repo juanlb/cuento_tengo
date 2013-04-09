@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  currency_id: 1
+  initial: 1.5
+  user_id: MyString
+
+two:
+  name: MyString
+  currency_id: 1
+  initial: 1.5
+  user_id: MyString

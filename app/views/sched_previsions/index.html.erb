@@ -1,0 +1,56 @@
+
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    <%= render :partial => "moves/side_accounts_categories" %>
+
+    <div class="span9">
+
+      <div class="well sched_prevision">
+        <%= render :partial => @create_form %>
+      </div>
+
+      <% if @show_prevs -%>
+        <div class="well">
+
+        </div>
+      <% end -%>
+      <div class="well well-small sched_prevision">
+        <h4>Previsiones programadas</h4>
+        <table class="table table-striped table-condensed table-bordered">
+          <tr>
+            <th>Descripci&oacute;n</th>
+            <th>Categoria</th>
+            <th>Cuenta</th>
+            <th>Monto</th>
+            <th colspan="2">D&iacute;a</th>
+          </tr>
+
+          <% @sched_previsions.each do |sched_prevision| %>
+            <tr>
+
+
+              <td><%=h sched_prevision.description %></td>
+              <td><%=h sched_prevision.category.name unless sched_prevision.category.blank? %></td>
+              <td><%= sched_prevision.account.name %></td>
+              <%  valor = format("%.2f\n",sched_prevision.amount * sched_prevision.operation)%>
+              <td class="td_numero"><%= sched_prevision.operation != 1 ? ( valor) : "<b>#{valor}</b>" %></td>
+
+              <td class="td_numero"><%=h sched_prevision.apply_day %></td>
+              <td width="35px">
+                <%= link_to '', edit_sched_prevision_path(sched_prevision), :class => 'icon-edit' %>
+                <%= link_to '', sched_prevision, :confirm => '¿Eliminar prevision?', :method => :delete, :class => 'icon-trash' %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+
+        <br />
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+

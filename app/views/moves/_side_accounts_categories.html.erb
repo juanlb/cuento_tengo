@@ -1,0 +1,71 @@
+<div class="span3">
+  <div class="well sidebar-nav">
+
+
+    <% action_form = @side_con_form_action.nil? ? "setear_sesion" : @side_con_form_action %>
+
+    <% form_tag :action=> action_form do -%>
+      <div class="well well-small">
+        <%= render :partial => "moves/primary_currency" %>
+      </div>
+
+      <% if @side_con_form -%>
+        <div class="well well-small">
+          <div class="row-fluid">
+            <div class="span4">
+              <h4>Per&iacute;odo</h4>
+            </div>
+            <div class="span3 offset5">
+               <a href="#" class="btn" onclick="set_month_year(); return false;">Hoy</a>
+            </div>
+          </div>
+          <div class="controls controls-row">
+            <select class="span5" name="date_month" id="date_month">
+              <%= @select_array_months %>
+            </select>
+
+            <select class="span4" name="date_year" id="date_year">
+              <%= @select_array_years %>
+            </select>
+            <script type="text/javascript">
+              function set_month_year() {
+                var sel = document.getElementById('date_year');
+                var val = document.getElementById('today_year').value;
+                for(var i = 0, j = sel.options.length; i < j; ++i) {
+                  if(sel.options[i].innerHTML === val) {
+                    sel.selectedIndex = i;
+                    break;
+                  }
+                }
+
+                var sel = document.getElementById('date_month');
+                var val = document.getElementById('today_month').value;
+                for(var i = 0, j = sel.options.length; i < j; ++i) {
+                  if(sel.options[i].value === val) {
+                    sel.selectedIndex = i;
+                    break;
+                  }
+                }
+
+              }
+            </script>
+            <%= hidden_field_tag :today_year, Time.now.year %>
+            <%= hidden_field_tag :today_month, Time.now.month %>
+            <%= submit_tag "Ver", :class => 'btn btn-primary span3' %>
+          </div>
+          
+        </div>
+      <% end -%>
+
+      <div class="well well-small">
+
+        <%= render :partial => "accounts/accounts_section" %>
+      </div>
+      <div class="well well-small">
+        <%= render :partial => "categories/categories_section" %>
+      </div>
+
+
+    <%  end %>
+  </div><!--/.well -->
+</div><!--/span-->

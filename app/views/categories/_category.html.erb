@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    <div class="div_li">
+      <div class="left">
+        <b><%= category.format_name %></b>
+      </div>
+      <div class="right">
+        <%= check_box_tag "category_#{category.id}", category.id, chequeado?("category", category.id) if @side_con_form %>
+      </div>
+    </div>
+  </td>
+</tr>

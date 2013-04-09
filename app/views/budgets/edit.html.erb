@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span5 offset3">
+      <div class="well">
+
+        <h1>Editar presupuesto</h1>
+
+        <% form_for(@budget) do |f| %>
+          <%= f.error_messages %>
+          <p>
+            <%= f.label 'Categor&iacute;a' %>
+            <%= f.select :category_id, @categories.collect {|z| [z.format_name, z.id]}, { :include_blank => true } %>
+          </p>
+
+          <p>
+            <%= f.label 'Monto' %>
+            <%= f.text_field :amount %>
+          </p>
+        
+          <p>
+          <div class="row-fluid">
+            <div class="span1">
+              <%= link_to 'Cancelar', {:action => 'index'}, :class => 'btn' %>
+            </div>
+            <div class="span1 offset9">
+              <%= f.submit 'Editar', :class => 'btn btn-primary' %>
+            </div>
+          </div>
+          </p>
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>

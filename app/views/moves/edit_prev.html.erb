@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span5 offset3">
+      <div class="well">
+
+        <h1>Editar Previsión</h1>
+
+        <% form_for :prev, :url => {:action => :update_prev, :id => @prev} do |f| %>
+          <% #Indica si después de editar tiene que confirmar %>
+          <%  if @confirm_prev -%>
+            <input type="hidden" name="confirm_prev" value="true">
+          <%  end -%>
+
+          <%= f.error_messages %>
+
+          <p>
+            <%= radio_button_tag 'operation', 'out', @prev.operation == -1 %> Gasto
+            <%= radio_button_tag 'operation', 'in', @prev.operation == 1 %> Dep&oacute;sito
+          </p>
+
+          <p>
+            <%= f.label "Fecha" %>
+            <%= calendar_date_select_tag "prev[created_at]", @prev.created_at, :time => true %>
+
+          </p>
+
+          <p>
+            <%= f.label "Descripcion" %>
+            <%= f.text_field :description %>
+          </p>
+          <p>
+            <%= f.label "Categoría" %>
+            <% if @transferencia -%>
+              <%= text_field_tag "nombre_categoria", "Transferencia", :disabled => true %>
+            <% else -%>
+              <%= f.select :category_id, @categories.collect {|z| [z.format_name, z.id]}, { :include_blank => true } %>
+            <% end -%>
+          </p>
+          <p>
+            <%= f.label "Cuenta" %>
+            <%= f.select :account_id, @accounts.collect {|z| [z.name, z.id]} %>
+          </p>
+
+
+          <p>
+            <%= f.label "Monto" %>
+            <%= text_field_tag "prev[amount]", @prev.amount %>
+          </p>
+          <p>
+          <div class="row-fluid">
+            <div class="span1">
+              <%= link_to 'Cancelar', {:action => 'index'}, :class => 'btn' %>
+            </div>
+            <div class="span1 offset9">
+              <%= f.submit 'Editar', :class => 'btn btn-primary' %>
+            </div>
+          </div>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div></div>

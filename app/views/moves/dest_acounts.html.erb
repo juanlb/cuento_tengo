@@ -1,0 +1,13 @@
+
+<%= label_tag "dest_account_id",  "Cuenta destino" %>
+<%= select_tag :dest_account_id, "<option value='0'></option>" + @accounts_m.collect {|z| "<option value='#{z.id}'>#{z.name} - #{z.currency.name}</option>"}.join %>
+
+
+<%=  observe_field(:dest_account_id,
+  :update => :div_change,
+  :with => "'dest_id=' + value + '&orig_id=' + $('orig_account_id').value",
+  :url => { :controller => "moves", :action => "set_change" }) %>
+
+<script type="text/javascript">
+  $('div_change').innerHTML = '';
+</script>

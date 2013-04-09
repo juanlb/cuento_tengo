@@ -1,0 +1,23 @@
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span5 offset3">
+      <div class="well">
+
+        <h1>Moneda principal</h1>
+
+        <% form_for @user, :url => {:controller  => "moves", :action => "select_currency", :id => @user.id} do |f| %>
+
+          <p>
+            <%= label_tag :currency_id, "Moneda:" %>
+            <%= f.select :currency_id, @currencies.collect {|z| [z.name, z.id]}, { :include_blank => true } %>
+          </p>
+          <p>
+            <%= f.submit 'Seleccionar', :class => 'btn btn-primary' %>
+          </p>
+
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>

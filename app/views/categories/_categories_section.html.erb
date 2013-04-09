@@ -1,0 +1,29 @@
+<h4>Categor&iacute;as</h4>
+<small>
+  <%= link_to_if @side_con_form, 'Marcar todas', false, :onclick => "cat_todos(); return false;" %> |
+  <%= link_to_if @side_con_form, 'Desmarcar todas', false, :onclick => "cat_ninguno(); return false;" %>
+</small>
+<div id="lista_categorias">
+  <table class="table table-striped table-condensed table-bordered">
+    <%= render :partial => "/categories/category", :collection => @categories%>
+
+    <tr>
+      <td>
+        <b><%= link_to "Nueva categor&iacute;a", new_category_path %></b>
+      </td>
+    </tr>
+  </table>
+</div>
+<script language="javascript">
+  function cat_todos() {
+<% @categories.each do |cat| -%>
+      $('category_<%= cat.id %>').checked = true;
+<%  end -%>
+  }
+
+  function cat_ninguno() {
+<% @categories.each do |cat| -%>
+      $('category_<%= cat.id %>').checked = false;
+<%  end -%>
+  }
+</script>

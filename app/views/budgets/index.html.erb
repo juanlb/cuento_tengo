@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    <%= render :partial => "moves/side_accounts_categories" %>
+
+    <div class="span9">
+
+      <div class="well <%= @form_class %>">
+        <%= render :partial => @create_form %>
+      </div>
+
+      <div class="well well-small <%= @form_class %>">
+
+        <h4>Presupuestos</h4>
+        <table class="table table-condensed  table-bordered">
+          <tr>
+            <th>Categor&iacute;a</th>
+            <th>Monto</th>
+            <th colspan="2">Porcentaje</th>
+            <th colspan="2">Gastado</th>
+
+          </tr>
+          <% @budgets.each do |budget| %>
+            <% clase_fila = cycle("tr_impar_budget","tr_par_budget") %>
+            <tr class="<%= clase_fila %>">
+              <td><%=h budget.category.name %></td>
+              <td class="td_numero">
+                <%=h budget.amount %>
+              </td>
+              <td class="td_center">
+                <% porcentaje = porcentaje(budget.amount, @gastos_categoria_full[budget.category_id][:total]) %>
+                <%= show_porcentaje(porcentaje) %>
+              </td>
+              <td class="td_numero">
+                <%= porcentaje %>%
+              </td>
+              <td class="td_numero">
+                <b>
+                  <%=  @gastos_categoria_full[budget.category_id][:total] %>
+                </b>
+              </td>
+
+              <td width="35px">
+                <%= link_to '', edit_budget_path(budget), :class => 'icon-edit' %>
+                <%= link_to '', budget, :confirm => '¿Eliminar presupuesto?', :method => :delete, :class => 'icon-trash'  %>
+              </td>
+            </tr>
+            <% if @gastos_categoria_full[budget.category_id][:details].size > 0 -%>
+              <tr class="<%= clase_fila %>">
+                <td colspan="4"></td>
+                <td>
+                  <table class="table table-striped table-condensed table-bordered">
+                    <% @gastos_categoria_full[budget.category_id][:details].each do |det| %>
+                      <tr class="tr_grey_par">
+                        <td style="width: 30%">
+                          <%= det[:name] %>
+                        </td>
+                        <td style="width: 50%">
+                          <% porcentaje = porcentaje(@gastos_categoria_full[budget.category_id][:total], det[:monto]) %>
+                          <%= show_porcentaje(porcentaje) %>
+                          <%= porcentaje %> %
+                        </td>
+                        <td align="right" style="width: 20%">
+                          <%= det[:monto] %>
+                        </td>
+                      </tr>
+                    <% end -%>
+                  </table>
+                </td>
+                <td></td>
+
+              </tr>
+            <% end -%>
+          <% end %>
+        </table>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

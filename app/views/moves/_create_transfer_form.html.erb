@@ -1,0 +1,43 @@
+<% form_tag({:controller => "moves", :action => "create_transfer"}, :class => 'new_trans')  do %>
+  <%= error_messages_for 'trans' %>
+  <ul class="nav nav-pills">
+    <li><%= link_to "Movimientos", :action => "index" %></li>
+    <li class="active"><a href="#">Transferencia</a></li>
+    <li><%= link_to "Previsi&oacute;n", :action => "prevision" %></li>
+    <li><%= link_to "Ajuste", :action => "ajuste" %></li>
+  </ul>
+  <div class="row-fluid">
+    <div class="span3">
+      <%= label_tag "created_at", "Fecha" %>
+      <%= calendar_date_select_tag "created_at", Time.now, :time => true, :class => "calendario" %>
+    </div>
+    <div class="span2">
+      <%= label_tag "description", "Descripci&oacute;n" %>
+      <%= text_field_tag :description, "", :size => 20 %>
+    </div>
+    <div class="span2">
+      <%= label_tag "orig_account_id",  "Cuenta origen" %>
+      <%= select_tag :orig_account_id, "<option value='0'></option>\n" + @accounts.collect {|z| "<option value='#{z.id}'>#{z.name} - #{z.currency.name}</option>"}.join("\n") %>
+    </div>
+    <%=  observe_field(:orig_account_id,
+      :update => :div_dest_account_select,
+      :with => "'id=' + value",
+      :url => { :controller => "moves", :action => "dest_acounts" }) %>
+    <div class="span2" id="div_dest_account_select">
+      <%= label_tag "dest_account_id",  "Cuenta destino" %>
+      <select id="dest_account_id" name="dest_account_id">
+        <option value="0">&nbsp;</option>
+      </select>
+    </div>
+    <div class="span1" id="div_change">
+    </div>
+    <div class="span1">
+      <%= label_tag :amount, "Monto" %>
+      <%= text_field_tag :amount, "", :size => 10 %>
+    </div>
+    <div class="span1">
+      <%= label_tag "&nbsp;" %>
+      <%= submit_tag 'Crear', :class => 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

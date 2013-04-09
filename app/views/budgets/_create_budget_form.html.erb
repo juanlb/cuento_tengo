@@ -1,0 +1,18 @@
+<% form_for @budget, :url => {:action => "create"} do |f| %>
+  <%= f.error_messages %>
+  <div class="row-fluid">
+    <div class="span3">
+      <%= f.label "Categor&iacute;a" %>
+      <%= f.select :category_id, @categories_combo.collect {|z| [z.format_name, z.id]}, { :include_blank => true } %>
+    </div>
+    <div class="span1">
+      <%= f.label "Monto" %>
+      <%= f.text_field :amount, :size => 10 %>
+    </div>
+    <div class="span1">
+      <%= f.label "&nbsp;" %>
+      <%= f.submit 'Crear', :class => 'btn btn-primary' %>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,23 @@
+<p>
+  <b>Description:</b>
+  <%=h @move.description %>
+</p>
+
+<p>
+  <b>Account:</b>
+  <%=h @move.account_id %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%=h @move.amount %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @move.category_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_move_path(@move) %> |
+<%= link_to 'Back', moves_path %>

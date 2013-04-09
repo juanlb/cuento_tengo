@@ -1,0 +1,12 @@
+<% if chequeado?("account", account_position.id) -%>
+  <tr>
+    <td>
+      <b><%= account_position.name %></b> - <%= account_position.currency.name %>
+    </td>
+      <% saldo = account_position.saldo -%>
+    <td class="td_numero">
+      <% session[:total_cuenta] += saldo.to_f -%>
+      <%= saldo %>
+    </td>
+  </tr>
+<% end -%>

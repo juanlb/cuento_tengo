@@ -1,0 +1,43 @@
+<% form_for @move, :url => {:action => "create_ajuste"} do |f| %>
+  <%= f.error_messages %>
+
+  <ul class="nav nav-pills">
+    <li><%= link_to "Movimientos", :action => "index" %></li>
+    <li><%= link_to "Transferencia", :action => "transfer" %></li>
+    <li><%= link_to "Previsi&oacute;n", :action => "prevision" %></li>
+    <li class="active"><a href="#">Ajuste</a></li>
+  </ul>
+  <div class="row-fluid">
+    <div class="row-fluid">
+      <div class="span3">
+        <%= f.label "Fecha" %>
+        <%= calendar_date_select_tag "prev[created_at]", Time.now, :time => true, :class => "calendario" %>
+      </div>
+      <div class="span2">
+        <%= f.label "Descripci&oacute;n" %>
+        <%= f.text_field :description, :value => 'Ajuste', :size => 20 %>
+      </div>
+      <div class="span2">
+        <%= f.label "Categor&iacute;a" %>
+        <%= f.select :category_id, @categories.collect {|z| [z.format_name, z.id]}, { :include_blank => true } %>
+      </div>
+      <div class="span2">
+        <%= f.label "Cuenta" %>
+        <%= f.select :account_id, [['', 0]] + @accounts.collect {|z| [z.name, z.id]} %>
+      </div>
+      <%=  observe_field(:move_account_id,
+        :update => :div_dest_account_saldo,
+        :with => "'id=' + value",
+        :url => { :controller => "moves", :action => "account_saldo" }) %>
+      <div class="span2" id="div_dest_account_saldo">
+        <%= f.label "Monto actual" %>
+        <%= f.text_field :amount, :size => 10 %>
+      </div>
+      <div class="span1">
+        <%= label_tag "&nbsp;" %>
+        <%= f.submit 'Crear', :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,13 @@
+<h4>Moneda principal</h4>
+<table class="table table-striped table-condensed table-bordered">
+  <tr>
+    <td>
+      <% if current_user.currency.nil? -%>
+        <p id="currency_not_selected">No seleccion&oacute; una moneda</p>
+        <%= link_to "Seleccionar moneda principal", :controller => "moves", :action => "edit_currency"  %>
+      <%  else -%>
+        <%= link_to current_user.currency.name, :controller => "moves", :action => "edit_currency" %>
+      <% end -%>
+    </td>
+  </tr>
+</table>

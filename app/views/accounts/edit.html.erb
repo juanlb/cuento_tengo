@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span5 offset3">
+      <div class="well">
+
+        <h1>Editar Cuenta</h1>
+
+        <% form_for(@account) do |f| %>
+          <%= f.error_messages %>
+
+          <p>
+            <%= f.label "Nombre" %>
+            <%= f.text_field :name %>
+          </p>
+
+          <p>
+            <%= f.label "Moneda" %>
+            <%= f.select :currency_id, @currencies.collect {|z| [z.name, z.id]} %>
+          </p>
+          <p>
+            <%= f.label "Saldo inicial" %>
+            <%= f.text_field :initial %>
+          </p>
+          <p>
+          <div class="row-fluid">
+            <div class="span1">
+              <%= link_to 'Cancelar', {:action => 'cancel'}, :class => 'btn' %>
+            </div>
+            <div class="span1 offset9">
+              <%= f.submit 'Editar', :class => 'btn btn-primary' %>
+            </div>
+          </div>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

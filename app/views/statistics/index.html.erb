@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    <%= render :partial => "moves/side_accounts_categories" %>
+    <div class="span9">
+      <div class="well well-small budget">
+        <h3>Movimientos del per&iacute;odo</h3>
+        <% total = 0.0 %>
+        <% @gastos_categoria_full.each do |gc| -%>
+          <% total += gc[1][:total] %>
+        <% end -%>
+
+        <h4>Gasto total del per&iacute;odo: <%= total %></h4>
+
+        <table class="table table-condensed  table-bordered">
+          <tr>
+            <th>Categor&iacute;a</th>
+
+            <th colspan="2">Porcentaje</th>
+            <th colspan="2">Gastado</th>
+          </tr>
+          <% @categories_parents.each do |cat| %>
+            <% clase_fila = cycle("tr_impar_budget","tr_par_budget") %>
+            <tr class="<%= clase_fila %>">
+              <td style="width: 20%">
+                <%=h cat.name %>
+              </td>
+              <td class="td_center">
+                <%# porcentaje = porcentaje(total, @gastos_categoria_full[cat.id][:total]) %>
+                <% porcentaje = porcentaje(total, @gastos_categoria_full[cat.id][:total]) %>
+                <%= show_porcentaje(porcentaje) %>
+              </td>
+              <td class="td_numero">
+                <%= porcentaje %>%
+              </td>
+              <td class="td_numero">
+                <b>
+                  <%=  @gastos_categoria_full[cat.id][:total] %>
+                </b>
+              </td>
+
+            </tr>
+            <% if @gastos_categoria_full[cat.id][:details].size > 0 -%>
+              <tr class="<%= clase_fila %>">
+                <td colspan="3"></td>
+
+                <td>
+                  <table class="table table-striped table-condensed table-bordered">
+                    <% @gastos_categoria_full[cat.id][:details].each do |det| %>
+                      <tr>
+                        <td style="width: 30%">
+                          <%= det[:name] %>
+                        </td>
+                        <td style="width: 50%">
+                          <% porcentaje = porcentaje(@gastos_categoria_full[cat.id][:total], det[:monto]) %>
+                          <%= show_porcentaje(porcentaje) %>
+                          <%= porcentaje %> %
+                        </td>
+                        <td align="right" style="width: 20%">
+                          <%= det[:monto] %>
+                        </td>
+                      </tr>
+                    <% end -%>
+                  </table>
+                </td>
+              </tr>
+            <% end -%>
+          <% end %>
+        </table>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

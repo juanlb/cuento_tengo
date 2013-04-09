@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyString
+  account_id: 1
+  user_id: 1
+  amount: 1.5
+  operation: 1
+  category_id: 1
+  last_apply_month: 1
+  apply_day: 1
+
+two:
+  description: MyString
+  account_id: 1
+  user_id: 1
+  amount: 1.5
+  operation: 1
+  category_id: 1
+  last_apply_month: 1
+  apply_day: 1

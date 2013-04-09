@@ -1,0 +1,33 @@
+abstract -v1.0.0
+actionmailer -v3.0.10, 2.3.5
+actionpack -v3.0.10, 2.3.5
+activemodel -v3.0.10
+activerecord -v3.0.10, 2.3.5
+activeresource -v3.0.10, 2.3.5
+activesupport -v3.0.10, 2.3.5
+arel -v2.0.10
+aws-s3 -v0.6.2
+builder -v2.1.2
+erubis -v2.6.6
+fastthread -v1.0.7
+gmail_sender -v1.1.1
+htmldoc -v0.2.3
+i18n -v0.5.0
+mail -v2.2.19
+mime-types -v1.16
+mislav-will_paginate -v2.3.11
+mysql -v2.8.1
+passenger -v2.2.11
+pg -v0.9.0
+polyglot -v0.3.2
+rack -v1.2.3, 1.1.0, 1.0.1
+rack-mount -v0.6.14
+rack-test -v0.5.7
+rails -v2.3.5
+rake -v0.8.7
+sqlite3-ruby -v1.2.5
+tlsmail -v0.0.1
+treetop -v1.4.10
+tzinfo -v0.3.29
+will_paginate -v3.0.0, 2.3.16
+xml-simple -v1.0.12

@@ -1,0 +1,42 @@
+<div style="background: #aaeebb ">
+  <h2>Cu&aacute;nto tengo?</h2>
+  <%if @error -%>
+    <font color="red"><b><%= flash[:notice] %></b></font>
+  <% else -%>
+    <font color="green"><b><%= flash[:notice] %></b></font>
+  <% end -%>
+
+  <% form_for @move, :url => {:action => "create_m"} do |f| %>
+
+    <%= radio_button_tag 'operation', 'out', true %> Gasto
+    <%= radio_button_tag 'operation', 'in' %> Dep&oacute;sito |
+
+    <p>
+      <%= f.label "Descripci&oacute;n" %><br />
+      <%= f.text_field :description, :size => 20 %>
+    </p>
+
+    <p>
+      <%= f.label "Categor&iacute;a" %><br />
+      <%= f.select :category_id, @categories.collect {|z| [z.format_name, z.id]}, { :include_blank => true } %>
+    </p>
+
+    <p>
+      <%= f.label "Cuenta" %><br />
+      <%= f.select :account_id, @accounts.collect {|z| [z.name, z.id]} %>
+
+    </p>
+
+    <p>
+      <%= f.label "Monto" %><br />
+      <%= f.text_field :amount, :size => 10 %>
+    </p>
+
+    <div id="submit_form">
+      <p>
+        <%= f.submit 'Crear' %>
+      </p>
+    </div>
+
+  <% end %>
+</div>

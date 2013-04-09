@@ -1,0 +1,211 @@
+/* 
+    Document   : layout
+    Created on : Mar 7, 2010, 10:54:27 AM
+    Author     : juanlb
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body, p, ol, ul, td {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size:   13px;
+    line-height: 18px;
+}
+
+
+
+#contenedor{
+    width: 1130px;
+    margin:0 auto;
+}
+
+#cabecera{
+    border: 1px solid black
+}
+
+#contenedor div#lateral_izq{
+    width: 248px;
+    display:block;
+    float:left;
+    position:relative;
+}
+
+
+
+#contenedor div#lateral_izq form p#currency_not_selected {
+    color:red;
+}
+
+#contenedor div#lateral_izq form p#currency {
+    font-size: 18px;
+}
+
+
+
+#contenedor div#lateral_izq div.div_li div{
+    display:inline;
+    white-space:nowrap;
+    display:table-cell;
+}
+
+
+
+
+#contenedor div#lateral_der {
+    margin: 0 0 0 250px;
+}
+
+
+
+#contenedor div#lateral_der div#create {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+div#inner_form{
+    height: 100px;
+}
+
+
+#contenedor div#lateral_der div.index
+{
+    background-color: #bbeeaa;
+}
+
+#contenedor div#lateral_der div.prevision
+{
+    background-color: #99ffee;
+}
+
+#contenedor div#lateral_der div.transfer
+{
+    background-color: #eeff99;
+}
+
+
+#contenedor div#lateral_der div.sched_prevision
+{
+    background-color: #FF8C00;
+}
+
+
+#contenedor div#lateral_der div#create .search_input {
+    float: left;
+    padding: 5px;
+}
+
+
+#contenedor div#lateral_der div#create div#operacion{
+    float: left;
+    width: 100%;
+    padding-left: 5px;
+}
+
+#contenedor div#lateral_der div#create div#operacion_signo{
+    float: left;
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#contenedor div#lateral_der div#create div#submit_form{
+    float: left;
+    padding-top: 22px;
+    padding-left: 18px
+}
+
+
+#contenedor div#lateral_der div#moves div#move_list{
+    border: 1px solid black;
+}
+
+#contenedor div#lateral_der div#moves div#prev_list{
+    border: 1px solid black;
+}
+
+
+#contenedor div#lateral_der div#lista_cuenta_posicion{
+    padding-top:17px;
+}
+
+#contenedor div#lateral_der div#lista_prev_posicion{
+    margin-top:17px;
+}
+
+#contenedor div#lateral_der div#total{
+    margin-top:30px;
+
+}
+#contenedor div#lateral_der div#total p{
+    font-size: 30px;
+}
+
+#contenedor div#lateral_der div#total span.red{
+    color: red;
+}
+
+#contenedor div#lateral_der div#total span.green{
+    color: green;
+}
+
+
+.item_par{
+    background: #bbeeaa
+}
+.item_impar{
+    background: #aaeebb
+}
+
+.tr_par{
+    background: #bbeeaa
+}
+.tr_impar{
+    background: #aaeebb
+}
+
+.tr_par_transfer{
+    background: #eeff99
+}
+.tr_impar_transfer{
+    background: #aaeebb
+}
+
+.tr_par_sched_prev{
+    background: #FFA500
+}
+.tr_impar_sched_prev{
+    background: #FF6347
+}
+
+.tr_prev_par{
+    background: #99ffee
+}
+.tr_prev_impar{
+    background: #eeff99
+}
+
+.errorExplanation {
+    padding: 10px;
+    margin: 10px;
+    background-color: red;
+    border: black solid 1px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: disc;    
+  margin-left: 15px;
+}
+

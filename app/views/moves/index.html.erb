@@ -1,0 +1,23 @@
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <%= render :partial => "moves/side_accounts_categories" %>
+    <div class="span9">
+
+      <div class="well <%= @form_class %>">
+        <%= render :partial => @create_form %>
+      </div>
+
+      <% if @show_prevs -%>
+        <div class="well well-small prevision">
+          <%= render :partial => "prevs_list" %>
+        </div>
+      <% end -%>
+      <div class="well well-small index">
+        <%= render :partial => "moves_list" %>
+      </div>
+
+
+    </div>
+  </div>
+</div>
